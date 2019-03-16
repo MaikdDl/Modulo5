@@ -1,3 +1,18 @@
-<p>
-  welcome-forms works!
-</p>
+<div>
+  <ul>
+    <li [class.selected]="isRegisterFormVisible">
+      <a (click)="toggleForm()">Rexistro</a>
+    </li>
+    <li [class.selected]="!isRegisterFormVisible">
+      <a (click)="toggleForm()">Acceso</a>
+    </li>
+  </ul>
+
+  <div class="register-form" *ngIf="!isRegisterFormVisible">
+    <p>Rexistro</p>
+  </div>
+  <div class="login-form" *ngIf="isRegisterFormVisible">
+    <p>Acceso</p>
+  </div>
+
+</div>

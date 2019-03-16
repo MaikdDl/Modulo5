@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'sn-welcome-forms',
   templateUrl: './welcome-forms.component.html',
   styleUrls: ['./welcome-forms.component.scss']
 })
-export class WelcomeFormsComponent implements OnInit {
+export class WelcomeFormsComponent {
 
-  constructor() { }
+  isRegisterFormVisible = true;
 
-  ngOnInit() {
+  toggleForm($event) {
+    this.isRegisterFormVisible = !this.isRegisterFormVisible;
   }
 
 }
