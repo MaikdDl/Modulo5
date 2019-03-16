@@ -8,9 +8,9 @@ describe('SiteLayoutHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SiteLayoutHeaderComponent ]
+      declarations: [SiteLayoutHeaderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
