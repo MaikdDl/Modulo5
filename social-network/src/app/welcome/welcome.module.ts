@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { WelcomeFormsComponent } from './components/welcome-forms/welcome-forms.component';
 import { WelcomeHeroComponent } from './components/welcome-hero/welcome-hero.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   declarations: [WelcomeComponent, WelcomeHeroComponent, WelcomeFormsComponent],
@@ -14,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CommonModule,
     WelcomeRoutingModule,
     SharedModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AuthModule
   ]
 })
 export class WelcomeModule { }

@@ -1,0 +1,24 @@
+<sn-form>
+
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <sn-form-control [control]="registerForm.get('fullName')">
+      <input type="text" placeholder="Nome e apelidos" formControlName="fullName" />
+    </sn-form-control>
+    <sn-form-control [control]="registerForm.get('email')">
+      <input type="email" placeholder="Correo electrónico" formControlName="email" />
+    </sn-form-control>
+    <sn-form-control [control]="registerForm.get('password')">
+      <input type="password" placeholder="Contrasinal" formControlName="password" />
+    </sn-form-control>
+    <sn-form-control [control]="registerForm.get('confirmPassword')" [group]="registerForm">
+      <input type="password" placeholder="Confirme o contrasinal" formControlName="confirmPassword" />
+    </sn-form-control>
+
+    <div class="button-wrapper">
+      <button>
+        Rexistrar
+      </button>
+    </div>
+  </form>
+</sn-form>
+<!-- <p> {{ registerForm.value | json }} </p> -->
