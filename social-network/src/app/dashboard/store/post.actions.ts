@@ -1,4 +1,4 @@
-import { PostResponse } from '../dashboard.models';
+import { Post } from '../dashboard.models';
 import { Error } from 'src/app/error/error.models';
 
 export class GetPosts {
@@ -7,7 +7,7 @@ export class GetPosts {
 
 export class GetPostsSuccess {
   static readonly type = '[Dashboard] GetPostsSuccess';
-  constructor(public posts: PostResponse[]) { }
+  constructor(public posts: Post[]) { }
 }
 
 export class GetPostsFailed {

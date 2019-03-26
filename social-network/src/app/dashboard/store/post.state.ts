@@ -1,24 +1,20 @@
 import { Store, State, StateContext, Action, Selector } from '@ngxs/store';
 import { GetPosts, GetPostsSuccess, GetPostsFailed } from './post.actions';
-import { PostCollection } from '../dashboard.models';
+import { Post } from '../dashboard.models';
 import { PostService } from "../services/post.service";
 import { tap, catchError } from "rxjs/operators";
 
-@State<PostCollection>({
+@State<Post[]>({
   name: 'posts',
-  defaults: {}
+  defaults: []
 })
 
 export class PostState {
-  @Selector()
 
-  static getPost(state: PostCollection) {
-    return Object.values(state);
-  }
-  constructor(private store: Store, private postService: PostService) { }
+  constructor(private postService: PostService) { }
 
   @Action(GetPosts)
-  getPosts({ dispatch }: StateContext<PostCollection>) {
+  getPosts({ dispatch }: StateContext<Post[]>) {
     return this.postService.getWall().pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
       catchError(error => dispatch(new GetPostsFailed(error.error)))
@@ -28,22 +24,18 @@ export class PostState {
 
   @Action(GetPostsSuccess)
   GetPostsSuccess(
-    { setState }: StateContext<PostCollection>,
+    { setState }: StateContext<Post[]>,
     { posts }: GetPostsSuccess
   ) {
-    const orderedPosts = posts.sort((p1, p2) => {
-      return p2.createdAt - p1.createdAt;
-    })
-    setState(posts.reduce((draft, post) => {
-      draft[post.id] = post;
-      return draft;
-    }, {})
+    setState(
+      posts.sort((p1, p2) => {
+        return p2.createdAt - p1.createdAt;
+      })
     );
-
   }
 
   @Action(GetPostsFailed)
-  GetPostsFailed(ctx: StateContext<PostCollection>, { errors }: GetPostsFailed) {
+  GetPostsFailed(ctx: StateContext<Post[]>, { errors }: GetPostsFailed) {
     console.log(errors)
   }
 }

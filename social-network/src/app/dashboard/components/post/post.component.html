@@ -1,18 +1,13 @@
-<!-- sn-post-content -->
-<!-- sn-like -->
-<!-- sn-post-comment-counter -->
-<!-- sn-post-comment -->
-
 <article>
-  <sn-post-head></sn-post-head>
+  <sn-post-head [post]="post" [user]="user"></sn-post-head>
 
-  <sn-post-body></sn-post-body>
+  <sn-post-body [post]="post"></sn-post-body>
 
-  <sn-like></sn-like>
+  <sn-like [likeCount]="post.likes.length"></sn-like>
 
   <section class="comments">
-    <sn-post-comment-counter></sn-post-comment-counter>
+    <sn-post-comment-counter [count]="post.comments.length"></sn-post-comment-counter>
     <sn-publisher></sn-publisher>
-    <sn-post-comment *ngFor="let comment of post.comments"></sn-post-comment>
+    <sn-post-comment *ngFor="let comment of post.comments" [comment]="comment" [user]="user"></sn-post-comment>
   </section>
 </article>

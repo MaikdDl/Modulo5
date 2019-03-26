@@ -1,8 +1,4 @@
-export interface PostCollection {
-  [key: string]: PostResponse;
-}
-
-export interface PostResponse {
+export interface Post {
   likes: string[];
   author: Author;
   owner: Author;

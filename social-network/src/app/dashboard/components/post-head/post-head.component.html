@@ -1,3 +1,9 @@
-<p>
-  post-head works!
-</p>
+<div class="post-content-head">
+  <sn-avatar [user]="post.author"></sn-avatar>
+  <div>
+    <h4>
+      <a> {{ post.author.fullName}} </a>
+    </h4>
+    <small>{{ post.createdAt | date: 'short' }}</small>
+  </div>
+</div>

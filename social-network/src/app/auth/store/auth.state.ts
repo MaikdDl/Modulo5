@@ -1,9 +1,20 @@
 import { AuthService } from '../services/auth.service';
 import { State, Store, StateContext, Action } from '@ngxs/store';
 import { Auth } from '../auth.models';
-import { Login, LoginSuccess, LoginFailed, Register, RegisterSuccess, RegisterFailed, GetUserProfile, GetUserProfileSuccess, GetUserProfileFailed } from './auth.actions';
+import {
+  Login,
+  LoginSuccess,
+  LoginFailed,
+  Register,
+  RegisterSuccess,
+  RegisterFailed,
+  GetUserProfile,
+  GetUserProfileSuccess,
+  GetUserProfileFailed
+} from './auth.actions';
 
 import { Navigate } from '@ngxs/router-plugin';
+import { tap, catchError } from "rxjs/operators";
 
 @State<Auth>({
   name: 'auth',
@@ -37,12 +48,10 @@ export class AuthState {
 
   @Action(Register)
   register({ dispatch }: StateContext<Auth>, action: Register) {
-    this.authService
-      .register(action.register)
-      .subscribe(
-        data => dispatch(new RegisterSuccess(data)),
-        error => dispatch(new RegisterFailed(error.error))
-      );
+    return this.authService.register(action.register).pipe(
+      tap(() => dispatch(new RegisterSuccess())),
+      catchError(error => dispatch(new RegisterFailed(error.error)))
+    );
   }
 
   @Action(GetUserProfile)
@@ -63,16 +72,11 @@ export class AuthState {
     patchState({ ...profile });
   }
 
-  @Action(LoginFailed, RegisterFailed, GetUserProfileFailed)
+  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed])
   loginError(ctx: StateContext<Auth>, { errors }: any) { }
 
   @Action(RegisterSuccess)
-  RegisterSuccess(
-    { patchState }: StateContext<Auth>,
-    { registerResponse }: RegisterSuccess
-  ) {
-    patchState({ ...registerResponse });
-  }
+  RegisterSuccess(ctx: StateContext<Auth>) { }
 
   @Action(RegisterFailed)
   registerError(ctx: StateContext<Auth>, { errors }: any) { }

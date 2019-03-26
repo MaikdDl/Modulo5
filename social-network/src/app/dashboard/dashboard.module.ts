@@ -20,6 +20,8 @@ import { PostContentComponent } from './components/post-content/post-content.com
 import { LikeComponent } from './components/like/like.component';
 import { PostCommentCounterComponent } from './components/post-comment-counter/post-comment-counter.component';
 import { PostHeadComponent } from './components/post-head/post-head.component';
+import { PostBodyComponent } from './components/post-body/post-body.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -38,12 +40,14 @@ import { PostHeadComponent } from './components/post-head/post-head.component';
     PostContentComponent,
     LikeComponent,
     PostCommentCounterComponent,
-    PostHeadComponent],
+    PostHeadComponent,
+    PostBodyComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     FontAwesomeModule,
-    NgxsModule.forFeature([PostState])
+    NgxsModule.forFeature([PostState]),
+    SharedModule
   ]
 })
 export class DashboardModule { }

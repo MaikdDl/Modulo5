@@ -11,6 +11,7 @@ import { ColorizerDirective } from './directives/colorizer.directive';
 import { FormComponent } from './components/forms/form.component';
 import { FormControlComponent } from './components/forms/form-control.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AvatarComponent } from "./components/avatar/avatar.component";
 
 @NgModule({
   declarations: [SiteLayoutComponent,
@@ -21,7 +22,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     ColorizerDirective,
     FormComponent,
     FormControlComponent,
-    PageNotFoundComponent],
+    PageNotFoundComponent,
+    AvatarComponent],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [SiteLayoutComponent,
     SiteLayoutHeaderComponent,
@@ -30,6 +32,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     IfDirective,
     ColorizerDirective,
     FormComponent,
-    FormControlComponent],
+    FormControlComponent,
+    AvatarComponent],
 })
 export class SharedModule { }

@@ -30,7 +30,7 @@ import { environment } from '../environments/environment';
       developmentMode: !environment.production
     }),
 
-    AppRoutingModule, WelcomeModule, AboutModule, DashboardModule, AuthModule],
+    WelcomeModule, AboutModule, DashboardModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })

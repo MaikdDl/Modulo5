@@ -29,7 +29,6 @@ export class Register {
 
 export class RegisterSuccess {
   static readonly type = '[Auth] RegisterSuccess';
-  constructor(public registerResponse: RegisterResponse) { }
 }
 
 export class RegisterFailed {
