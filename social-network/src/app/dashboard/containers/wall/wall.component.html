@@ -1,0 +1,7 @@
+<sn-publisher></sn-publisher>
+
+<ng-container *ngIf="(currentUser$ | async) as currentUser">
+  <ng-container *ngFor="let item of (posts$ | async)">
+    <sn-post [post]="item" [user]="currentUser"></sn-post>
+  </ng-container>
+</ng-container>

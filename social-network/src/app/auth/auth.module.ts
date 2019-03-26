@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
@@ -8,6 +8,9 @@ import { RegisterComponent } from './containers/register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxsModule } from '@ngxs/store';
+import { AuthState } from './store/auth.state';
+import { JwtInterceptor } from './services/jwt.interceptor';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
@@ -17,8 +20,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     SharedModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxsModule.forFeature([AuthState])
   ],
-  exports: [LoginComponent, RegisterComponent]
+  exports: [LoginComponent, RegisterComponent],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }]
 })
 export class AuthModule { }

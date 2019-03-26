@@ -1,0 +1,18 @@
+<!-- sn-post-content -->
+<!-- sn-like -->
+<!-- sn-post-comment-counter -->
+<!-- sn-post-comment -->
+
+<article>
+  <sn-post-head></sn-post-head>
+
+  <sn-post-body></sn-post-body>
+
+  <sn-like></sn-like>
+
+  <section class="comments">
+    <sn-post-comment-counter></sn-post-comment-counter>
+    <sn-publisher></sn-publisher>
+    <sn-post-comment *ngFor="let comment of post.comments"></sn-post-comment>
+  </section>
+</article>

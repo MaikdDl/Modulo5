@@ -9,6 +9,7 @@
     </sn-form-control>
     <sn-form-control [control]="registerForm.get('password')">
       <input type="password" placeholder="Contrasinal" formControlName="password" />
+      <!-- type="password" oculta los caracteres de la contraseña-->
     </sn-form-control>
     <sn-form-control [control]="registerForm.get('confirmPassword')" [group]="registerForm">
       <input type="password" placeholder="Confirme o contrasinal" formControlName="confirmPassword" />

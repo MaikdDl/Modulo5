@@ -7,8 +7,9 @@ const routes: Routes = [{
   path: '', component: SiteLayoutComponent,
   children: [
     {
-      path: 'welcome',
-      component: WelcomeComponent
+      path: '',
+      redirectTo: 'welcome',
+      pathMatch: 'full'
     }
   ]
 }];

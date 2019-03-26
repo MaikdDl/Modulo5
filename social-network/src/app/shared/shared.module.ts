@@ -10,6 +10,7 @@ import { IfDirective } from './directives/if.directive';
 import { ColorizerDirective } from './directives/colorizer.directive';
 import { FormComponent } from './components/forms/form.component';
 import { FormControlComponent } from './components/forms/form-control.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [SiteLayoutComponent,
@@ -19,7 +20,8 @@ import { FormControlComponent } from './components/forms/form-control.component'
     IfDirective,
     ColorizerDirective,
     FormComponent,
-    FormControlComponent],
+    FormControlComponent,
+    PageNotFoundComponent],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [SiteLayoutComponent,
     SiteLayoutHeaderComponent,
