@@ -1,11 +1,12 @@
-<div class="post-coment" [class.me]="comment.author.uuid === user.uuid"></div>
-<sn-avatar [user]="comment.author"></sn-avatar>
-<div class="post-message">
-  <h5>
-    <a>
-      {{ comment.author.fullName }}
-    </a>
-    <small>{{ comment.createdAt | date: 'short' }}</small>
-  </h5>
-  <p>{{ comment.message }}</p>
+<div class="post-coment" [class.me]="comment.author.uuid === user.uuid">
+  <sn-avatar [user]="comment.author"></sn-avatar>
+  <div class="post-message">
+    <h5>
+      <a>
+        {{ comment.author.fullName }}
+      </a>
+      <small>{{ comment.createdAt | date: 'short' }}</small>
+    </h5>
+    <p>{{ comment.message }}</p>
+  </div>
 </div>

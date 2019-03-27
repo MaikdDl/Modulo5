@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'sn-publisher',
@@ -6,10 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./publisher.component.scss']
 })
 export class PublisherComponent implements OnInit {
+  @Input() user;
+  @Output() publish = new EventEmitter();
+  content = '';
 
+  publishIcon = faCaretSquareRight;
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  publishStatus() {
+    if (!this.content) {
+      return;
+    }
+    this.publish.emit(this.content);
   }
 
+  exploreKeyPressed($event) {
+    if ($event.which === 13 && $event.metaKey) {
+      this.publish.emit(this.content);
+    }
+  }
 }

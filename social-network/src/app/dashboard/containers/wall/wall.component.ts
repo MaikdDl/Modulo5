@@ -21,7 +21,10 @@ export class WallComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new GetPosts());
+  }
 
+  publishPost($event) {
+    console.log($event);
   }
 
 }

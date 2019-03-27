@@ -22,6 +22,7 @@ import { PostCommentCounterComponent } from './components/post-comment-counter/p
 import { PostHeadComponent } from './components/post-head/post-head.component';
 import { PostBodyComponent } from './components/post-body/post-body.component';
 import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -46,6 +47,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     DashboardRoutingModule,
     FontAwesomeModule,
+    FormsModule,
     NgxsModule.forFeature([PostState]),
     SharedModule
   ]
