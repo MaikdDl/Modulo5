@@ -12,6 +12,7 @@ import { FormComponent } from './components/forms/form.component';
 import { FormControlComponent } from './components/forms/form-control.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AvatarComponent } from "./components/avatar/avatar.component";
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 @NgModule({
   declarations: [SiteLayoutComponent,
@@ -23,7 +24,8 @@ import { AvatarComponent } from "./components/avatar/avatar.component";
     FormComponent,
     FormControlComponent,
     PageNotFoundComponent,
-    AvatarComponent],
+    AvatarComponent,
+    CapitalizePipe],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [SiteLayoutComponent,
     SiteLayoutHeaderComponent,

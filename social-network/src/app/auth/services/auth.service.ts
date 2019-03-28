@@ -42,4 +42,8 @@ export class AuthService {
   getUserProfile() {
     return this.http.get<Auth>(`${environment.apiBaseUrl}/user`);
   }
+
+  logout() {
+    localStorage.removeItem('auth');
+  }
 }

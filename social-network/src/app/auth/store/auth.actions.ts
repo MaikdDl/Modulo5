@@ -49,3 +49,7 @@ export class GetUserProfileFailed {
   static type = '[Auth] GetUserProfileFailed';
   constructor(public error: Error[]) { }
 }
+
+export class Logout {
+  static type = '[Auth] Logout';
+}

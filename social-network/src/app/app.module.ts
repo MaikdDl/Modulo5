@@ -11,9 +11,9 @@ import { AppComponent } from './app.component';
 import { WelcomeModule } from './welcome/welcome.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { AboutModule } from './about/about.module';
-import { AuthModule } from './auth/auth.module';
 
 import { environment } from '../environments/environment';
+import { ErrorModule } from './error/error.module';
 
 @NgModule({
   declarations: [
@@ -29,8 +29,9 @@ import { environment } from '../environments/environment';
     NgxsModule.forRoot([], {
       developmentMode: !environment.production
     }),
-
-    WelcomeModule, AboutModule, DashboardModule, AppRoutingModule],
+    WelcomeModule, AboutModule, DashboardModule,
+    ErrorModule,
+    AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
 })

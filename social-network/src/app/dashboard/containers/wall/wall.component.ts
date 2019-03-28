@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
-import { GetPosts } from '../../store/post.actions';
+import { GetPosts, AddPost } from '../../store/post.actions';
 import { PostState } from '../../store/post.state';
 import { Post } from '../../dashboard.models';
-import { Observable } from 'rxjs';
+import { Observable, interval } from 'rxjs';
 import { AuthState } from 'src/app/auth/store/auth.state';
 import { Auth } from 'src/app/auth/auth.models';
 
@@ -23,8 +23,7 @@ export class WallComponent implements OnInit {
     this.store.dispatch(new GetPosts());
   }
 
-  publishPost($event) {
-    console.log($event);
+  publishPost(content) {
+    this.store.dispatch(new AddPost({ content }));
   }
-
 }

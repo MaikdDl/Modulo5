@@ -20,3 +20,8 @@ export interface Comment {
   createdAt: number;
   id: string;
 }
+
+export interface PostRequest {
+  content: string;
+  uuid?: string;
+}

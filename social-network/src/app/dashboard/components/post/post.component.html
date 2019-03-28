@@ -7,7 +7,10 @@
 
   <section class="comments">
     <sn-post-comment-counter [count]="post.comments.length"></sn-post-comment-counter>
-    <sn-publisher [user]="user"></sn-publisher>
+
+    <hr />
+
+    <sn-publisher [user]="user" (publish)="addComment($event)"></sn-publisher>
     <sn-post-comment *ngFor="let comment of post.comments" [comment]="comment" [user]="user"></sn-post-comment>
   </section>
 </article>

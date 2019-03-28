@@ -14,4 +14,21 @@ export class PostService {
   getWall(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.apiBaseUrl}/user/wall`);
   }
+
+  addPost(content: string, userId?: string): Observable<Post> {
+    const path = userId ? `/${userId}` : '';
+
+    return this.http.post<Post>(`${environment.apiBaseUrl}/post${path}`, {
+      content
+    });
+  }
+
+  addComment(postId: string, message: string) {
+    return this.http.post<Comment>(
+      `${environment.apiBaseUrl}/post/${postId}/comment`,
+      {
+        message
+      }
+    );
+  }
 }

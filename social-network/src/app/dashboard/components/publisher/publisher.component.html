@@ -1,7 +1,7 @@
 <div class="publisher">
   <sn-avatar [user]="user"></sn-avatar>
   <div class="publisher-text">
-    <textarea [ngModel]="content" (keydown)="exploreKeyPressed($event)"></textarea>
+    <textarea [(ngModel)]="content" (keydown)="exploreKeyPressed($event)"></textarea>
   </div>
   <button (click)="publishStatus()">
     <fa-icon [icon]="publishIcon"></fa-icon>

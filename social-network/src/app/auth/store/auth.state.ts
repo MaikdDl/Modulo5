@@ -10,11 +10,13 @@ import {
   RegisterFailed,
   GetUserProfile,
   GetUserProfileSuccess,
-  GetUserProfileFailed
+  GetUserProfileFailed,
+  Logout
 } from './auth.actions';
 
 import { Navigate } from '@ngxs/router-plugin';
 import { tap, catchError } from "rxjs/operators";
+import { SetErrors } from "src/app/error/store/error.actions";
 
 @State<Auth>({
   name: 'auth',
@@ -72,12 +74,18 @@ export class AuthState {
     patchState({ ...profile });
   }
 
-  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed])
-  loginError(ctx: StateContext<Auth>, { errors }: any) { }
+  @Action(Logout)
+  Logout({ setState, dispatch }: StateContext<Auth>) {
+    this.authService.logout();
+    setState(null);
+    dispatch(new Navigate(['/welcome']));
+  }
 
   @Action(RegisterSuccess)
   RegisterSuccess(ctx: StateContext<Auth>) { }
 
-  @Action(RegisterFailed)
-  registerError(ctx: StateContext<Auth>, { errors }: any) { }
+  @Action([LoginFailed, RegisterFailed, GetUserProfileFailed])
+  error({ dispatch }: StateContext<Auth>, { errors }: any) {
+    dispatch(new SetErrors(errors));
+  }
 }
