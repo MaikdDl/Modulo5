@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Hero } from "./hero";
-// import { HEROES } from "./in-memory-data.service";
+import { InMemoryDataService } from "./in-memory-data.service";
 import { Observable, of } from 'rxjs';
+import { Hero } from "./hero";
 import { catchError, map, tap } from "rxjs/operators";
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
