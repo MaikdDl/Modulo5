@@ -18,6 +18,10 @@ const routes: Routes = [
       component: WallComponent
     },
     {
+      path: 'user/:userId/wall',
+      component: WallComponent
+    },
+    {
       path: 'friends',
       component: FriendsComponent
     },

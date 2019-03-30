@@ -2,7 +2,7 @@
   <sn-avatar [user]="comment.author"></sn-avatar>
   <div class="post-message">
     <h5>
-      <a>
+      <a (click)="navigateToWall(comment.author.uuid)">
         {{ comment.author.fullName }}
       </a>
       <small>{{ comment.createdAt | userFriendlyDate }}</small>

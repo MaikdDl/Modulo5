@@ -1,16 +1,23 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'sn-post-head',
   templateUrl: './post-head.component.html',
   styleUrls: ['./post-head.component.scss']
 })
-export class PostHeadComponent implements OnInit {
+export class PostHeadComponent {
   @Input() post;
   @Input() user;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  ngOnInit() { }
+  navigateToWall(uuid: string) {
+    if (uuid !== this.user.uuid) {
+      this.router.navigate(['/user', uuid, 'wall']);
+    } else {
+      this.router.navigate(['/wall']);
+    }
+  }
 
 }

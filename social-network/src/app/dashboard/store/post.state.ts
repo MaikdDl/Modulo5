@@ -29,8 +29,8 @@ export class PostState {
   constructor(private postService: PostService, private store: Store) { }
 
   @Action(GetPosts)
-  getPosts({ dispatch }: StateContext<Post[]>) {
-    return this.postService.getWall().pipe(
+  getPosts({ dispatch }: StateContext<Post[]>, { userId }: GetPosts) {
+    return this.postService.getWall(userId).pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
       catchError(error => dispatch(new GetPostsFailed(error.error)))
     )

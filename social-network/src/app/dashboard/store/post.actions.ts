@@ -3,6 +3,7 @@ import { Error } from 'src/app/error/error.models';
 
 export class GetPosts {
   static readonly type = '[Dashboard] GetPost';
+  constructor(public userId?: string) { }
 }
 
 export class GetPostsSuccess {

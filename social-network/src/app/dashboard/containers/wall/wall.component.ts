@@ -6,6 +6,7 @@ import { Post } from '../../dashboard.models';
 import { Observable, interval } from 'rxjs';
 import { AuthState } from 'src/app/auth/store/auth.state';
 import { Auth } from 'src/app/auth/auth.models';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'sn-wall',
@@ -17,10 +18,12 @@ export class WallComponent implements OnInit {
   @Select(PostState) posts$: Observable<Post[]>;
   @Select(AuthState) currentUser$: Observable<Auth>;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.store.dispatch(new GetPosts());
+    this.route.params.subscribe(routeParams => {
+      this.store.dispatch(new GetPosts(routeParams.userId));
+    });
   }
 
   publishPost(content) {
