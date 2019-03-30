@@ -1,0 +1,34 @@
+<sn-form>
+  <sn-errors></sn-errors>
+  <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
+    <sn-form-control [control]="updateProfileForm.get('fullName')">
+      <input type="text" placeholder="Nome" formControlName="fullName" />
+    </sn-form-control>
+    <div formGroupName="preferences">
+      <sn-form-control [control]="updateProfileForm.get('preferences.description')">
+        <textarea rows="10" placeholder="Contanos algo sobre tí" formControlName="description" snNullDefault></textarea>
+      </sn-form-control>
+      <sn-form-control [control]="updateProfileForm.get('preferences.isPublicProfile')">
+        <label class="checkbox-wrapper">É público o teu perfil?
+          <input type="checkbox" formControlName="isPublicProfile" />
+          <span class="checkmark"></span>
+        </label>
+      </sn-form-control>
+      <sn-form-control [control]="updateProfileForm.get('preferences.linkedIn')">
+        <input type="text" placeholder="Introduce aa túa dirección pública de LinkedIn" formControlName="linkedIn"
+          snNullDefault />
+      </sn-form-control>
+      <sn-form-control [control]="updateProfileForm.get('preferences.twitter')">
+        <input type="text" placeholder="Introduce a túa conta pública de Twitter" formControlName="twitter"
+          snNullDefault />
+      </sn-form-control>
+      <sn-form-control [control]="updateProfileForm.get('preferences.github')">
+        <input type="text" placeholder="Introduce a túa dirección pública de Github" formControlName="github"
+          snNullDefault />
+      </sn-form-control>
+    </div>
+    <div class="button-wrapper">
+      <button type="submit">Actualizar o perfil</button>
+    </div>
+  </form>
+</sn-form>

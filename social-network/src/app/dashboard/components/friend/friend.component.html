@@ -1,0 +1,17 @@
+<div class="friend" [ngClass]="getSearchStatus()">
+  <sn-avatar [user]="friend" width="80px" height="80px"></sn-avatar>
+  <div class="friend-details">
+    <h5>{{ friend?.fullName }}</h5>
+    <div class="friend-toolbar">
+      <a *ngIf="getSearchStatus() === 'pending'">
+        <fa-icon [icon]="iconAccept"></fa-icon>Aceptar petición de amizade
+      </a>
+      <a *ngIf="getSearchStatus() === 'not-friend'">
+        <fa-icon [icon]="iconAdd"></fa-icon>Engadir ós meus amigos
+      </a>
+      <a *ngIf="getSearchStatus() === 'is-friend'">
+        <fa-icon [icon]="iconRemove"></fa-icon>Borrar da miña lista de amigos
+      </a>
+    </div>
+  </div>
+</div>

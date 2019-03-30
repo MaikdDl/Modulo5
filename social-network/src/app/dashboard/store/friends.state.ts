@@ -15,6 +15,9 @@ import {
   AddFriend,
   AddFriendSuccess,
   AcceptFriendRequests,
+  SearchUsers,
+  SearchUsersSuccess,
+  SearchUsersFailed,
 } from './friends.actions';
 import { tap, catchError } from 'rxjs/operators';
 import { SetErrors } from 'src/app/error/store/error.actions';
@@ -36,9 +39,36 @@ export class FriendsState {
   ) { }
 
   @Selector()
+  static getSearchFriends({ friends, userSearch }: Friends) {
+    return [...userSearch, ...friends];
+  }
+
+  @Selector()
   static getFriendRequests({ requests }: Friends) {
     return requests;
   }
+
+  @Action(SearchUsers)
+  searchUsers(
+    { dispatch }: StateContext<Friends>,
+    { searchTerm }: SearchUsers
+  ) {
+    return this.authService.search(searchTerm).pipe(
+      tap(users => dispatch(new SearchUsersSuccess(users))),
+      catchError(error => dispatch(new SearchUsersFailed(error.error)))
+    );
+  }
+
+  @Action(SearchUsersSuccess)
+  SearchUsersSuccess(
+    { patchState }: StateContext<Friends>,
+    { users }: SearchUsersSuccess
+  ) {
+    patchState({
+      userSearch: users
+    });
+  }
+
   @Action(GetFriends)
   getFriends({ dispatch }: StateContext<Friends>) {
     return this.friendService.getFriends().pipe(
@@ -126,7 +156,12 @@ export class FriendsState {
   @Action(AddFriendSuccess)
   addFriendSuccess({ dispatch }: StateContext<Friends>) { }
 
-  @Action([GetFriendRequestFailed, AddFriendFailed, AcceptFriendRequestFailed])
+  @Action([
+    GetFriendRequestFailed,
+    AddFriendFailed,
+    AcceptFriendRequestFailed,
+    SearchUsersFailed
+  ])
   error({ dispatch }: StateContext<Friends>, { errors }: any) {
     dispatch(new SetErrors(errors));
   }

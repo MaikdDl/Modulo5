@@ -51,6 +51,22 @@ export interface RegisterResponse {
   password: string;
 }
 
+export interface Profile {
+  uuid: string;
+  fullName: string;
+  avatarUrl: string;
+  preferences: Preferences;
+}
+
+export interface Preferences {
+  isPublicProfile: boolean;
+  linkedIn?: string;
+  twitter?: string;
+  github?: string;
+  description?: string;
+}
+
+
 
 
 

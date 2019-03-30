@@ -7,10 +7,10 @@ import { FriendsState } from '../../store/friends.state';
 
 @Component({
   selector: 'sn-friend-requests',
-  templateUrl: './friend-request.component.html',
-  styleUrls: ['./friend-request.component.scss']
+  templateUrl: './friend-requests.component.html',
+  styleUrls: ['./friend-requests.component.scss']
 })
-export class FriendRequestComponent implements OnInit {
+export class FriendRequestsComponent implements OnInit {
   @Select(FriendsState.getFriendRequests) requests$: Observable<Friend[]>;
 
   constructor(private store: Store) { }

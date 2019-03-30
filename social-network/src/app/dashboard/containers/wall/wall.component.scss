@@ -9,6 +9,7 @@
   sn-errors {
     display: block;
     margin-top: 20px;
+    margin-bottom: 10px;
   }
   @include respond-above(lg) {
     padding: 20px 100px;

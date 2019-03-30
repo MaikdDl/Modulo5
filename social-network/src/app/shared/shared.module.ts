@@ -15,6 +15,7 @@ import { AvatarComponent } from "./components/avatar/avatar.component";
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 import { TextareaDirective } from './directives/textarea.directive';
 import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [SiteLayoutComponent,
@@ -29,7 +30,8 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     AvatarComponent,
     CapitalizePipe,
     TextareaDirective,
-    UserFriendlyDatePipe],
+    UserFriendlyDatePipe,
+    LoaderComponent],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [SiteLayoutComponent,
     SiteLayoutHeaderComponent,
@@ -42,6 +44,7 @@ import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
     AvatarComponent,
     CapitalizePipe,
     TextareaDirective,
-    UserFriendlyDatePipe],
+    UserFriendlyDatePipe,
+    LoaderComponent],
 })
 export class SharedModule { }

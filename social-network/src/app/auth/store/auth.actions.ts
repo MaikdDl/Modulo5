@@ -2,9 +2,11 @@ import {
   LoginRequest,
   LoginResponse,
   RegisterRequest,
-  Auth
+  Auth,
+  Profile
 } from '../auth.models';
 import { Error } from "src/app/error/error.models";
+
 
 export class Login {
   static readonly type = '[Auth] Login';
@@ -48,6 +50,22 @@ export class GetUserProfileFailed {
   static type = '[Auth] GetUserProfileFailed';
   constructor(public error: Error[]) { }
 }
+
+export class UpdateUserProfile {
+  static readonly type = '[Auth] UpdateUserProfile';
+  constructor(public profile: Profile) { }
+}
+
+export class UpdateUserProfileSuccess {
+  static readonly type = '[Auth] UpdateUserProfileSuccess';
+  constructor(public profile: Profile) { }
+}
+
+export class UpdateUserProfileFailed {
+  static type = '[Auth] UpdateUserProfileFailed';
+  constructor(public errors: Error[]) { }
+}
+
 
 export class Logout {
   static type = '[Auth] Logout';

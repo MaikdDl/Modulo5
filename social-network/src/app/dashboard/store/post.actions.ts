@@ -13,7 +13,7 @@ export class GetPostsSuccess {
 
 export class GetPostsFailed {
   static readonly type = '[Dashboard] GetPostsFailed';
-  constructor(public errors: Error[]) { }
+  constructor(public errors: Error[], private uuid: string) { }
 }
 
 export class AddPost {

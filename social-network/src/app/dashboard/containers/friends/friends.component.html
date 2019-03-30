@@ -1,3 +1,5 @@
-<p>
-  friends works!
-</p>
+<sn-search-user></sn-search-user>
+
+<div class="friends-grid">
+  <sn-friend *ngFor="let friend of (friends$ | async)" [friend]="friend"></sn-friend>
+</div>

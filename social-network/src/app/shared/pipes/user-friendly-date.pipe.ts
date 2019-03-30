@@ -27,9 +27,9 @@ export class UserFriendlyDatePipe implements PipeTransform {
         counter = Math.floor(seconds / intervals[interval]);
         if (counter > 0) {
           if (counter === 1) {
-            return 'Fai ' + counter + ' ' + interval;
+            return 'Hai ' + counter + ' ' + interval;
           } else {
-            return 'Fai ' + counter + ' ' + interval + 's';
+            return 'Hai ' + counter + ' ' + interval + 's';
           }
         }
       }

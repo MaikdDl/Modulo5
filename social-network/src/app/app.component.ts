@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { GlobalState } from './shared/state/global.state';
 
 @Component({
   selector: 'sn-root',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'social-network';
+  title = 'Ola, son Miguel';
+  @Select(GlobalState.isFetching) isFetching$;
+
+  constructor() { }
+
+  onClick(event) {
+    console.log(event);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { GetPosts, AddPost } from '../../store/post.actions';
 import { PostState } from '../../store/post.state';
@@ -7,6 +7,7 @@ import { Observable, interval } from 'rxjs';
 import { AuthState } from 'src/app/auth/store/auth.state';
 import { Auth } from 'src/app/auth/auth.models';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from "src/app/auth/services/auth.service";
 
 @Component({
   selector: 'sn-wall',
@@ -18,11 +19,14 @@ export class WallComponent implements OnInit {
   @Select(PostState) posts$: Observable<Post[]>;
   @Select(AuthState) currentUser$: Observable<Auth>;
 
-  constructor(private store: Store, private route: ActivatedRoute) { }
+  constructor(private store: Store, private route: ActivatedRoute,
+    private element: ElementRef) { }
 
   ngOnInit() {
     this.route.params.subscribe(routeParams => {
       this.store.dispatch(new GetPosts(routeParams.userId));
+
+      this.element.nativeElement.parentElement.scrollTop = 0;
     });
   }
 

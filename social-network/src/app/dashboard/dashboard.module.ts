@@ -24,8 +24,12 @@ import { PostBodyComponent } from './components/post-body/post-body.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ErrorModule } from '../error/error.module';
-import { FriendRequestComponent } from './components/friend-request/friend-request.component';
+import { FriendRequestsComponent } from './components/friend-requests/friend-requests.component';
 import { FriendsState } from './store/friends.state';
+import { PrivateWallComponent } from './components/private-wall/private-wall.component';
+import { AuthModule } from '../auth/auth.module';
+import { FriendComponent } from './components/friend/friend.component';
+import { SearchUserComponent } from './components/search-user/search-user.component';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -46,7 +50,10 @@ import { FriendsState } from './store/friends.state';
     PostCommentCounterComponent,
     PostHeadComponent,
     PostBodyComponent,
-    FriendRequestComponent],
+    FriendRequestsComponent,
+    PrivateWallComponent,
+    FriendComponent,
+    SearchUserComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -54,7 +61,8 @@ import { FriendsState } from './store/friends.state';
     FormsModule,
     ErrorModule,
     NgxsModule.forFeature([PostState, FriendsState]),
-    SharedModule
+    SharedModule,
+    AuthModule
   ]
 })
 export class DashboardModule { }

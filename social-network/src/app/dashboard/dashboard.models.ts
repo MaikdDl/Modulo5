@@ -1,4 +1,5 @@
-import { Preferences, Auth } from '../auth/auth.models';
+import { Preferences, Auth, Profile } from '../auth/auth.models';
+
 
 export interface Post {
   likes: string[];
@@ -46,6 +47,6 @@ export interface FriendRequest {
 
 export interface Friends {
   friends: Friend[];
-  userSearch: Auth[];
+  userSearch: Profile[];
   requests: Friend[];
 }

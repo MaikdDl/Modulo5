@@ -1,5 +1,6 @@
 import { Friend } from '../dashboard.models';
 import { Error } from 'src/app/error/error.models';
+import { Profile } from 'src/app/auth/auth.models';
 
 export class GetFriends {
   static readonly type = '[Friend] GetFriends';
@@ -54,5 +55,20 @@ export class AddFriendSuccess {
 
 export class AddFriendFailed {
   static readonly type = '[Friend] AddFriendFailed';
+  constructor(public errors: Error[]) { }
+}
+
+export class SearchUsers {
+  static readonly type = '[Friend] SearchUsers';
+  constructor(public searchTerm: string) { }
+}
+
+export class SearchUsersSuccess {
+  static readonly type = '[Friend] SearchUsersSuccess';
+  constructor(public users: Profile[]) { }
+}
+
+export class SearchUsersFailed {
+  static readonly type = '[Friend] SearchUsersFailed';
   constructor(public errors: Error[]) { }
 }

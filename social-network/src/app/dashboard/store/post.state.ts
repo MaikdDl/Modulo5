@@ -18,6 +18,7 @@ import { PostService } from "../services/post.service";
 import { tap, catchError } from "rxjs/operators";
 import { SetErrors } from "src/app/error/store/error.actions";
 import { Logout } from 'src/app/auth/store/auth.actions';
+import { Navigate } from '@ngxs/router-plugin';
 
 @State<Post[]>({
   name: 'posts',
@@ -32,7 +33,7 @@ export class PostState {
   getPosts({ dispatch }: StateContext<Post[]>, { userId }: GetPosts) {
     return this.postService.getWall(userId).pipe(
       tap(posts => dispatch(new GetPostsSuccess(posts))),
-      catchError(error => dispatch(new GetPostsFailed(error.error)))
+      catchError(error => dispatch(new GetPostsFailed(error.error, userId)))
     )
   }
 
@@ -157,12 +158,21 @@ export class PostState {
     );
   }
 
+  @Action([GetPostsFailed])
+  getPostsFailed({ dispatch }: StateContext<Post[]>, { errors, uuid }: any) {
+    if (errors && errors.filter(error => error.status === 403).length > 0) {
+      dispatch(new Navigate(['/user', uuid, 'private', 'wall']));
+    } else {
+      dispatch(new SetErrors(errors));
+    }
+  }
+
   @Action(Logout)
   Logout({ setState }: StateContext<Post[]>) {
     setState(null);
   }
 
-  @Action([GetPostsFailed, AddPostFailed, AddCommentFailed])
+  @Action([AddPostFailed, AddCommentFailed, LikeFailed])
   error({ dispatch }: StateContext<Post[]>, { errors }: any) {
     dispatch(new SetErrors(errors));
   }
