@@ -1,4 +1,5 @@
 <sn-form>
+  <sn-errors></sn-errors>
 
   <form [formGroup]="registerForm" (ngSubmit)="register()">
     <sn-form-control [control]="registerForm.get('fullName')">

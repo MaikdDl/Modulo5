@@ -1,4 +1,7 @@
-<sn-publisher [user]="currentUser$ | async" (publish)="publishPost($event)"></sn-publisher>
+<sn-errors></sn-errors>
+
+<sn-publisher [user]="currentUser$ | async" (publish)="publishPost($event)"
+  placeholder="Qué merda andas a pensar, verme noxento"></sn-publisher>
 
 <ng-container *ngIf="(currentUser$ | async) as currentUser">
   <ng-container *ngFor="let item of (posts$ | async)">

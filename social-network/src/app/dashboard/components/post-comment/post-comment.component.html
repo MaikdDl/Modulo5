@@ -5,7 +5,7 @@
       <a>
         {{ comment.author.fullName }}
       </a>
-      <small>{{ comment.createdAt | date: 'short' }}</small>
+      <small>{{ comment.createdAt | userFriendlyDate }}</small>
     </h5>
     <p>{{ comment.message }}</p>
   </div>

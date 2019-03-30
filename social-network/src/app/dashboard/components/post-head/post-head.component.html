@@ -4,6 +4,6 @@
     <h4>
       <a> {{ post.author.fullName}} </a>
     </h4>
-    <small>{{ post.createdAt | date: 'short' }}</small>
+    <small>{{ post.createdAt | userFriendlyDate }}</small>
   </div>
 </div>

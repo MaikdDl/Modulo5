@@ -13,6 +13,8 @@ import { FormControlComponent } from './components/forms/form-control.component'
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AvatarComponent } from "./components/avatar/avatar.component";
 import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { TextareaDirective } from './directives/textarea.directive';
+import { UserFriendlyDatePipe } from './pipes/user-friendly-date.pipe';
 
 @NgModule({
   declarations: [SiteLayoutComponent,
@@ -25,7 +27,9 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     FormControlComponent,
     PageNotFoundComponent,
     AvatarComponent,
-    CapitalizePipe],
+    CapitalizePipe,
+    TextareaDirective,
+    UserFriendlyDatePipe],
   imports: [CommonModule, RouterModule, FontAwesomeModule],
   exports: [SiteLayoutComponent,
     SiteLayoutHeaderComponent,
@@ -35,6 +39,9 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     ColorizerDirective,
     FormComponent,
     FormControlComponent,
-    AvatarComponent],
+    AvatarComponent,
+    CapitalizePipe,
+    TextareaDirective,
+    UserFriendlyDatePipe],
 })
 export class SharedModule { }

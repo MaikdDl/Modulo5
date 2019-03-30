@@ -3,14 +3,15 @@
 
   <sn-post-body [post]="post"></sn-post-body>
 
-  <sn-like [likeCount]="post.likes.length"></sn-like>
+  <sn-like [likeCount]="post.likes.length" (like)="like()"></sn-like>
 
   <section class="comments">
     <sn-post-comment-counter [count]="post.comments.length"></sn-post-comment-counter>
 
     <hr />
 
-    <sn-publisher [user]="user" (publish)="addComment($event)"></sn-publisher>
+    <sn-publisher [user]="user" (publish)="addComment($event)" placeholder="Deixa un comentario, verme noxento...">
+    </sn-publisher>
     <sn-post-comment *ngFor="let comment of post.comments" [comment]="comment" [user]="user"></sn-post-comment>
   </section>
 </article>

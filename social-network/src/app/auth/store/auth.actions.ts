@@ -2,7 +2,6 @@ import {
   LoginRequest,
   LoginResponse,
   RegisterRequest,
-  RegisterResponse,
   Auth
 } from '../auth.models';
 import { Error } from "src/app/error/error.models";

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'sn-publisher',
   templateUrl: './publisher.component.html',
@@ -8,7 +9,10 @@ import { faCaretSquareRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class PublisherComponent implements OnInit {
   @Input() user;
+  @Input() placeholder;
+
   @Output() publish = new EventEmitter();
+
   content = '';
 
   publishIcon = faCaretSquareRight;

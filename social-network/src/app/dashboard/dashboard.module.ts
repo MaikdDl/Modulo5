@@ -23,6 +23,9 @@ import { PostHeadComponent } from './components/post-head/post-head.component';
 import { PostBodyComponent } from './components/post-body/post-body.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { ErrorModule } from '../error/error.module';
+import { FriendRequestComponent } from './components/friend-request/friend-request.component';
+import { FriendsState } from './store/friends.state';
 
 @NgModule({
   declarations: [DashboardComponent,
@@ -42,13 +45,15 @@ import { FormsModule } from '@angular/forms';
     LikeComponent,
     PostCommentCounterComponent,
     PostHeadComponent,
-    PostBodyComponent],
+    PostBodyComponent,
+    FriendRequestComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    NgxsModule.forFeature([PostState]),
+    ErrorModule,
+    NgxsModule.forFeature([PostState, FriendsState]),
     SharedModule
   ]
 })

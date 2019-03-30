@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { GetUserProfile } from 'src/app/auth/store/auth.actions';
+import { GetFriends } from '../../store/friends.actions';
 
 @Component({
   selector: 'sn-dashboard',
@@ -12,6 +13,6 @@ export class DashboardComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit() {
-    this.store.dispatch(new GetUserProfile());
+    this.store.dispatch([new GetUserProfile(), new GetFriends()]);
   }
 }

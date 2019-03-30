@@ -44,3 +44,22 @@ export class AddCommentFailed {
   static readonly type = '[Comment] AddCommmentFailed';
   constructor(public errors: Error[]) { }
 }
+
+export class Like {
+  static readonly type = '[Post] Like';
+  constructor(public postId: string) { }
+}
+
+export class LikeSuccess {
+  static readonly type = '[Post] Like Success';
+  constructor(
+    public postId: string,
+    public isLike: boolean,
+    public userUuid: string
+  ) { }
+}
+
+export class LikeFailed {
+  static readonly type = '[Post] Like Failed';
+  constructor(public errors: Error[]) { }
+}

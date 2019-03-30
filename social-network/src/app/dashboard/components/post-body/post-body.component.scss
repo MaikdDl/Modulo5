@@ -23,6 +23,9 @@
     list-style-type: circle;
     padding-left: 30px;
   }
+  p {
+    word-break: break-all;
+  }
   pre {
     padding: 15px;
     border-radius: 5px;

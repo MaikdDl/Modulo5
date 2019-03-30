@@ -11,8 +11,10 @@ import { environment } from "../../../environments/environment";
 export class PostService {
   constructor(private http: HttpClient) { }
 
-  getWall(): Observable<Post[]> {
-    return this.http.get<Post[]>(`${environment.apiBaseUrl}/user/wall`);
+  getWall(userId?: string): Observable<Post[]> {
+    const path = userId ? `/${userId}` : '';
+
+    return this.http.get<Post[]>(`${environment.apiBaseUrl}/user/wall${path}`);
   }
 
   addPost(content: string, userId?: string): Observable<Post> {
@@ -29,6 +31,17 @@ export class PostService {
       {
         message
       }
+    );
+  }
+
+  like(postId: string) {
+    return this.http.post(`${environment.apiBaseUrl}/post/${postId}/like`, {});
+  }
+
+  dislike(postId: string) {
+    return this.http.delete(
+      `${environment.apiBaseUrl}/post/${postId}/like`,
+      {}
     );
   }
 }

@@ -1,0 +1,10 @@
+<div class="friend-requests" *ngIf="(requests$ | async).length">
+  <h5><b>Peticións de amizade</b></h5>
+  <div class="friend" *ngFor="let request of (requests$ | async)">
+    <sn-avatar [user]="request" width="30px" height="30px"></sn-avatar>
+    <div class="request">
+      <p>{{ request.fullName }}</p>
+      <a (click)="acceptRequest(request)">Aceptar petición</a>
+    </div>
+  </div>
+</div>
